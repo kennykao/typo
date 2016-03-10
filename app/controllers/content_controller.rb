@@ -1,9 +1,4 @@
 class ContentController < ApplicationController
-  def merge(file)
-    
-    
-    
-  end  
   class ExpiryFilter
     def before(controller)
       @request_time = Time.now
@@ -39,4 +34,3 @@ class ContentController < ApplicationController
     this_blog.current_theme.layout(self.action_name)
   end
 end
-

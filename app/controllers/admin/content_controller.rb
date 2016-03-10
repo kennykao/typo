@@ -240,4 +240,12 @@ class Admin::ContentController < Admin::BaseController
   def setup_resources
     @resources = Resource.by_created_at
   end
+
+  def merge(other_id)
+    other = Article.find(params[:id])
+    if not other.nil?
+      @article.merge(other)
+    end
+    flash[:message] = "You cannot merge with a non-existant article!"
+  end  
 end
