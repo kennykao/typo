@@ -118,6 +118,7 @@ class Admin::ContentController < Admin::BaseController
     if not other.nil?
       @article = Article.find(params[:id])
       @article.merge(other)
+      redirect_to :action => "index"
     end
     flash[:message] = "You cannot merge with a non-existant article!"
   end
