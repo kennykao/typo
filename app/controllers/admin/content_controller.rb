@@ -114,7 +114,7 @@ class Admin::ContentController < Admin::BaseController
   end
 
   def merge
-    other = Article.find(params[:other_id])
+    other = Article.find(params[:merge_with])
     if not other.nil?
       @article = Article.find(params[:id])
       @article.merge(other)

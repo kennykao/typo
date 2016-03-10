@@ -2,8 +2,8 @@
 
 <!--'/admin/content/edit/:id/merge'-->
 <%= form_tag(form_action) do %>
-  <%= label_tag(:other_id, "Article ID") %>
-  <%= text_field_tag(:other_id) %>
+  <%= label_tag(:merge_with, "Article ID") %>
+  <%= text_field_tag(:merge_with) %>
   <%= submit_tag('Merge') %>
   
 <% end %>
