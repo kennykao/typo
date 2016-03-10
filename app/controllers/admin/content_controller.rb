@@ -113,6 +113,15 @@ class Admin::ContentController < Admin::BaseController
     render :text => nil
   end
 
+  def merge
+    other = Article.find(params[:other_id])
+    if not other.nil?
+      @article = Article.find(params[:id])
+      @article.merge(other)
+    end
+    flash[:message] = "You cannot merge with a non-existant article!"
+  end
+
   protected
 
   def get_fresh_or_existing_draft_for_article
@@ -240,12 +249,4 @@ class Admin::ContentController < Admin::BaseController
   def setup_resources
     @resources = Resource.by_created_at
   end
-
-  def merge(other_id)
-    other = Article.find(params[:id])
-    if not other.nil?
-      @article.merge(other)
-    end
-    flash[:message] = "You cannot merge with a non-existant article!"
-  end  
 end
