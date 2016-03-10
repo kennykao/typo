@@ -43,4 +43,7 @@
     </tr>    
     <%= render 'article_list', { :articles => @articles } -%>
 </table>
+<% if current_user.admin? %> 
+	<%= render "admin/content/merge", :form_action => { :action => "merge", :id => @article.id } %>
+<% end %>
 <%end%>

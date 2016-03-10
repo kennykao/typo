@@ -419,7 +419,7 @@ class Article < Content
   def merge(other_article)
       self.update_attribute(:body, self.body + Article.find(other_article).body)
       other_article_comments = Comment.find_all_by_article_id(other_article)
-      other_article_comments.each {|comment| comment.update_attribute(:article, self.id) }
+      other_article_comments.each {|comment| comment.update_attribute(:article, self) }
       Article.find(other_article).destroy
   end
 
