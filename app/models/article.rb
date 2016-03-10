@@ -467,3 +467,10 @@ class Article < Content
     return from..to
   end
 end
+
+  def merge(other_article)
+      self.update_attribute(:body, self.body + Article.find(other_article_).body)
+      other_article_comments = Comment.find_all_by_article_id(other_article)
+      other_article_comments.each {|comment| comment.update_attribute(:article, self.id) }
+      Article.find(other_article).destroy
+  end
